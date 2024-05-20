@@ -1,0 +1,273 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: poppins;
+}
+
+:root {
+    --white-color: white;
+    --font-color: rgb(148, 148, 148);
+    --green-c: rgb(0, 201, 102);
+}
+
+body {
+    background-color: rgb(20, 20, 20);
+}
+
+.navi {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    background-color: rgb(39, 39, 39);
+    font-size: 18px;
+    margin: 30px 80px;
+    border-radius: 9px;
+
+}
+
+nav ul {
+    display: flex;
+}
+
+ul li {
+    list-style: none;
+    margin: 0 25px;
+
+}
+
+ul li a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+.about-me-a {
+    color: var(--green-c);
+}
+
+ul li a:hover {
+    color: var(--white-color);
+}
+
+.right {
+    color: var(--font-color);
+    /* margin: 0 25px; */
+}
+
+.left {
+    color: var(--green-c);
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.left a{
+    text-decoration: none;
+    color: var(--green-c);
+}
+
+.sayan-color {
+    color: var(--white-color);
+}
+
+button {
+    width: 125px;
+    font-size: 18px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--green-c);
+    color: var(--white-color);
+}
+
+.sec-second {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.sec-second>div {
+    width: 50%;
+}
+
+
+.sec-right {
+    margin-left: -500px;
+}
+
+
+
+/* form */
+.container {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-outter {
+    display: flex;
+    width: 1000px;
+    height: 500px;
+    background-color: rgb(245, 245, 245);
+    border-radius: 10px;
+}
+
+.left-box {
+    background-color: rgb(255, 255, 255);
+    height: 500px;
+    width: 50%;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-box img{
+    width: 400px;
+}
+
+.right-box {
+    background-color: rgb(248, 248, 248); /* rgb(0, 201, 102) */
+    height: 500px;
+    width: 50%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-head{
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(48, 48, 48);
+    padding: 20px;
+    
+}
+
+.input-name{
+    width: 300px;
+    height: 35px;
+    border-radius: 20px;
+    border: none;
+    padding-left: 20px;
+    margin-left: 20px;
+}
+
+.input-mail{
+    width: 300px;
+    height: 35px;
+    border-radius: 20px;
+    border: none;
+    padding-left: 20px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.input-description{
+    width: 300px;
+    height: 120px;
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 10px;
+    resize: none;
+}
+
+::placeholder{
+    font-style: italic;
+}
+
+.button-send{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 35px;
+    border-radius: 20px;
+    margin-top: 30px;
+    margin-left: 20px;
+    color: white;
+    font-weight: bold;
+    background-color: var(--green-c);
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.line2 {
+    border: 0;
+    background-color: var(--green-c);
+    height: 1.2px;
+    margin: 120px 84px 0px;
+}
+
+.nav-foot {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    font-size: 18px;
+}
+
+.nav-foot .ul-foot {
+    display: flex;
+}
+
+.right-foot {
+    display: flex;
+    gap: 20px;
+    color: var(--font-color);
+    margin-right: -100px;
+}
+
+.left-foot {
+    color: var(--green-c);
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: -100px;
+}
+
+.sayan-color-foot {
+    color: var(--white-color);
+}
+
+.right-foot img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    filter: invert(100%);
+}
+
+.right-foot a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+.contact-me{
+    cursor: pointer;
+}

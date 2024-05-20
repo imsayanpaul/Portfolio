@@ -1,0 +1,280 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: poppins;
+}
+
+:root {
+    --white-color: white;
+    --font-color: rgb(148, 148, 148);
+    --green-c: rgb(0, 201, 102);
+}
+
+body {
+    background-color: rgb(20, 20, 20);
+}
+
+.navi {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    background-color: rgb(39, 39, 39);
+    font-size: 18px;
+    margin: 30px 80px;
+    border-radius: 9px;
+
+}
+
+nav ul {
+    display: flex;
+}
+
+ul li {
+    list-style: none;
+    margin: 0 25px;
+
+}
+
+ul li a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+.home-list-a{
+    color: var(--green-c);
+}
+
+.about-me-a{
+    color: var(--green-c);
+}
+
+ul li a:hover {
+    color: var(--white-color);
+}
+
+.right {
+    color: var(--font-color);
+    /* margin: 0 25px; */
+}
+
+.left {
+    color: var(--green-c);
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.left a{
+    text-decoration: none;
+    color: var(--green-c);
+}
+
+.sayan-color {
+    color: var(--white-color);
+}
+
+button {
+    width: 125px;
+    font-size: 18px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--green-c);
+    color: var(--white-color);
+}
+
+.first-left a {
+    text-decoration: none;
+}
+
+.sec-first {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 100px 0px 0px 30px;
+}
+
+.first-left {
+    margin: 0px 0px 0px 20px;
+    /* 15 */
+}
+
+.sec-first>div {
+    width: 40%;
+}
+
+.first-right img {
+    margin-left: 52px;
+    width: 400px;
+}
+
+.hi {
+    color: var(--white-color);
+    font-size: 40px;
+}
+
+.sayanpaul {
+    font-size: 70px;
+    margin-top: -15px;
+    font-weight: bold;
+    color: var(--white-color);
+}
+
+.text {
+    color: var(--white-color);
+    font-size: 20px;
+}
+
+.frontend-text {
+    color: var(--green-c);
+}
+
+.circular--square {
+    border-radius: 50%;
+}
+
+.book {
+    margin-top: 24px;
+    cursor: pointer;
+}
+
+.line {
+    border: 0;
+    background-color: var(--green-c);
+    height: 1.2px;
+    margin: 75px 84px;
+}
+
+.sec-second {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.sec-second>div {
+    width: 50%;
+}
+
+.sec-img {
+    width: 300px;
+    border-radius: 50%;
+
+}
+
+.about-button {
+    background-color: var(--white-color);
+    color: black;
+    margin-bottom: 10px;
+}
+
+.about-text {
+    color: var(--green-c);
+    font-size: 30px;
+}
+
+.about-details {
+    color: var(--white-color);
+    margin-top: 15px;
+}
+
+.sec-right {
+    margin-left: -500px;
+}
+
+
+.sec-third {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sec-third>div {
+    width: 40%;
+}
+
+.skill-button {
+    margin-top: 100px;
+    background-color: var(--white-color);
+    color: black;
+    margin-bottom: 10px;
+}
+
+.skill-text {
+    color: var(--green-c);
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 30px;
+}
+
+.container img {
+    width: 40px;
+}
+
+.line2 {
+    border: 0;
+    background-color: var(--green-c);
+    height: 1.2px;
+    margin: 0px 84px;
+}
+
+.nav-foot {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    font-size: 18px;
+}
+
+.nav-foot .ul-foot {
+    display: flex;
+}
+
+.right-foot {
+    display: flex;
+    gap: 20px;
+    color: var(--font-color);
+    margin-right: -100px;
+}
+
+.left-foot {
+    color: var(--green-c);
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: -100px;
+}
+
+.sayan-color-foot {
+    color: var(--white-color);
+}
+
+.right-foot img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    filter: invert(100%);
+}
+
+.pic-mobile {
+    display: none;
+}
+
+.about-2 {
+    display: none;
+}
+
+.right-foot a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+.contact-me{
+    cursor: pointer;
+}

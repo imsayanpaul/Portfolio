@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: poppins;
+}
+
+:root {
+    --white-color: white;
+    --font-color: rgb(148, 148, 148);
+    --green-c: rgb(0, 201, 102);
+}
+
+body {
+    background-color: rgb(20, 20, 20);
+}
+
+.navi {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    background-color: rgb(39, 39, 39);
+    font-size: 18px;
+    margin: 30px 80px;
+    border-radius: 9px;
+
+}
+
+nav ul {
+    display: flex;
+}
+
+ul li {
+    list-style: none;
+    margin: 0 25px;
+
+}
+
+ul li a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+.service-list-a {
+    color: var(--green-c);
+}
+
+.about-me-a {
+    color: var(--green-c);
+}
+
+ul li a:hover {
+    color: var(--white-color);
+}
+
+.right {
+    color: var(--font-color);
+    /* margin: 0 25px; */
+}
+
+.left {
+    color: var(--green-c);
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.left a {
+    text-decoration: none;
+    color: var(--green-c);
+}
+
+.sayan-color {
+    color: var(--white-color);
+}
+
+button {
+    width: 125px;
+    font-size: 18px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--green-c);
+    color: var(--white-color);
+}
+
+.sec-second {
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.sec-second>div {
+    width: 50%;
+}
+
+
+.sec-right {
+    margin-left: -500px;
+}
+
+.line2 {
+    border: 0;
+    background-color: var(--green-c);
+    height: 1.2px;
+    margin: 167px 84px 0px;
+}
+
+.nav-foot {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    font-size: 18px;
+}
+
+.nav-foot .ul-foot {
+    display: flex;
+}
+
+.right-foot {
+    display: flex;
+    gap: 20px;
+    color: var(--font-color);
+    margin-right: -100px;
+}
+
+.left-foot {
+    color: var(--green-c);
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: -100px;
+}
+
+.sayan-color-foot {
+    color: var(--white-color);
+}
+
+.right-foot img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+    filter: invert(100%);
+}
+
+.right-foot a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+
+
+/* cards */
+.container {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(3, 280px);
+    justify-content: center;
+    gap: 50px;
+}
+
+.cards {
+    width: 280px;
+    height: 400px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    /* gap: 20px; */
+    align-items: center;
+    /* font-weight: bold; */
+    font-size: 20px;
+    border-radius: 10px;
+    padding-top: 40px;
+}
+.card1 img{
+    width: 80px;
+}
+.card2 img{
+    width: 80px;
+}
+.card3 img{
+    width: 80px;
+}
+.card4 img{
+    width: 80px;
+}
+.card5 img{
+    width: 80px;
+}
+.card6 img{
+    width: 80px;
+}
+
+.card-heads{
+    font-family: poppins;
+    text-align: center;
+    padding: 20px;
+    color: rgb(74, 74, 74);
+    font-weight: bold;
+}
+
+.ht1{
+    font-size: 16px;
+    text-align: center;
+    padding: 20px;
+    color:rgb(0, 132, 66);
+}
+
+.container-button{
+    height: 200px;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+
+.button-booknow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 40px;
+    background-color: var(--green-c);
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    border-radius: 20px;
+}
+
+.cards a{
+    text-decoration: none;
+}
+
+.card1:hover{
+    transform: scale(1.1, 1.1);
+    transition: transform 0.5s ease;
+    box-shadow: 0 0 20px rgba(0, 182, 15, 0.8);
+}
+.card2:hover{
+    transform: scale(1.1, 1.1);
+    transition: transform 0.5s ease;
+    box-shadow: 0 0 20px rgba(0, 182, 15, 0.8);
+
+
+}
+.card3:hover{
+    transform: scale(1.1, 1.1);
+    transition: transform 0.5s ease;
+    box-shadow: 0 0 20px rgba(0, 182, 15, 0.8);
+
+
+}
+.card4:hover{
+    transform: scale(1.1, 1.1);
+    transition: transform 0.5s ease;
+    box-shadow: 0 0 20px rgba(0, 182, 15, 0.8);
+
+
+}
+.card5:hover{
+    transform: scale(1.1, 1.1);
+    transition: transform 0.5s ease;
+    box-shadow: 0 0 20px rgba(0, 182, 15, 0.8);
+
+
+}
+.card6:hover{
+    transform: scale(1.1, 1.1);
+    transition: transform 0.5s ease;
+    box-shadow: 0 0 20px rgba(0, 182, 15, 0.8);
+}
+
+.contact-me{
+    cursor: pointer;
+}
