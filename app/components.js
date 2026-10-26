@@ -82,3 +82,43 @@ export function LocalTime({socials}){
     <ul className="local-links">{socials.map(([name,href])=><li key={name}><a href={href} {...external}>{name} <span aria-hidden="true">↗</span></a></li>)}</ul>
   </aside>;
 }
+
+// Scroll reveals: tags elements by selector so markup stays untouched. Nothing is hidden unless JS runs and motion is allowed.
+const revealGroups=[
+  ['up','.section-label,.problem-head h2,.problem-head p,.work-head h2,.work-head p,.filter-bar,.project-meta,.project-facts,.project-links,.project details,.about h2,.signature,.about-copy>*,.dock-heading,.contact-intro,.contact-form,.local-card,.profile-intro>div>*,.career-label,.career-entry,.about-next,.about-breadcrumb'],
+  ['mask','.contact-title,.profile-intro h1'],
+  ['image','.preview,.profile-photo'],
+];
+const staggerGroups='.problem-paths>li,.local-links>li';
+export function ScrollFX(){
+  useEffect(()=>{
+    const root=document.documentElement;
+    const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let raf=0;
+    const onScroll=()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const max=root.scrollHeight-innerHeight;root.style.setProperty('--progress',max>0?String(scrollY/max):'0');if(!reduce)root.style.setProperty('--hs',String(Math.min(scrollY,900)));});};
+    onScroll();addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);
+    if(reduce||!('IntersectionObserver' in window))return()=>{removeEventListener('scroll',onScroll);removeEventListener('resize',onScroll);};
+    root.classList.add('fx');
+    const pending=new Set();
+    const reveal=target=>{
+      if(!pending.delete(target))return;
+      io.unobserve(target);target.classList.add('is-in');
+      const done=1500+(+target.style.getPropertyValue('--d')||0)*70;
+      setTimeout(()=>{target.removeAttribute('data-reveal');target.classList.remove('is-in');},done);
+    };
+    const io=new IntersectionObserver(entries=>entries.forEach(({isIntersecting,target})=>{if(isIntersecting)reveal(target);}),{rootMargin:'0px 0px -12% 0px',threshold:.08});
+    // Backup for browsers that throttle IntersectionObserver (background tabs, some webviews).
+    let last=0;
+    const sweep=()=>{const now=Date.now();if(now-last<90)return;last=now;pending.forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight*.88&&r.bottom>0)reveal(el);});};
+    addEventListener('scroll',sweep,{passive:true});
+    const tag=(el,kind,d)=>{if(el.dataset.fx)return;el.dataset.fx='1';const r=el.getBoundingClientRect();if(r.top<innerHeight*.85&&r.bottom>0)return;el.dataset.reveal=kind;if(d)el.style.setProperty('--d',d);pending.add(el);io.observe(el);};
+    const scan=()=>{
+      revealGroups.forEach(([kind,sel])=>document.querySelectorAll(sel).forEach(el=>tag(el,kind)));
+      document.querySelectorAll(staggerGroups).forEach(el=>tag(el,'up',[...el.parentNode.children].indexOf(el)+1));
+    };
+    scan();
+    const mo=new MutationObserver(scan);mo.observe(document.body,{childList:true,subtree:true});
+    return()=>{io.disconnect();mo.disconnect();removeEventListener('scroll',sweep);removeEventListener('scroll',onScroll);removeEventListener('resize',onScroll);root.classList.remove('fx');document.querySelectorAll('[data-fx]').forEach(el=>{delete el.dataset.fx;el.removeAttribute('data-reveal');el.classList.remove('is-in');el.style.removeProperty('--d');});};
+  },[]);
+  return <div className="scroll-progress" aria-hidden="true"/>;
+}
