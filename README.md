@@ -1,17 +1,33 @@
-### Diverse Portfolio
+# Sayan Paul — Portfolio
 
-A diverse portfolio website featuring home, about me, services, and contact me sections, created using only HTML and CSS. This project is designed to showcase different sections of a portfolio and does not include responsiveness.
+My personal site: the things I've built, the problems behind them, and how to reach me.
 
-**Features:**
-- Home section with brief introduction
-- About Me section highlighting skills and experiences
-- Services section outlining offered services
-- Contact Me section with a form for inquiries
+Built with Next.js (App Router), React, CSS and Motion.
 
-**Note:** This project is not responsive.
+## Run locally
 
-**License:** MIT License
+```sh
+npm install
+npm run dev
+```
 
-Feel free to clone and modify this project for your own portfolio.
+Open http://127.0.0.1:3000.
 
----
+## Build
+
+```sh
+npm run build
+```
+
+The site is exported as static files to `out/`, so it can be hosted anywhere.
+
+Set `SITE_URL` to the live address when deploying (for example `https://yourdomain.dev`) so link previews on LinkedIn, X and WhatsApp point to the right place.
+
+## Where things live
+
+- `app/projects.js` — project details, screenshots and links
+- `app/page.js` — home page sections
+- `app/about/` — about page, experience and education
+- `app/components.js` — project gallery, problem list and contact form
+- `app/globals.css` — styles
+- `public/` — images, icons and résumé

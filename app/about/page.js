@@ -1,0 +1,6 @@
+import ProfileContent from "./profile-content";
+import Link from 'next/link';
+import SiteHeader from '../site-header';
+const external={target:'_blank',rel:'noopener noreferrer'};
+export const metadata={title:'About Sayan Paul — Full-stack Developer',description:'Background, experience, education, and résumé of Sayan Paul.',openGraph:{title:'About Sayan Paul',description:'Full-stack developer: background, experience, and education.',url:'/about'}};
+export default function AboutPage(){return <><a className="skip" href="#about">Skip to about</a><div className="topline"><span>PERSONAL INTERNET CORNER / VOL. 01</span><span>THE PERSON BEHIND THE COMMITS</span></div><SiteHeader activePage="about"/><main className="about-page"><div className="wrap about-breadcrumb"><Link href="/">← Back to home</Link><span className="mono">SAYAN PAUL / ABOUT</span></div><ProfileContent/><div className="wrap about-next"><p>See what I’ve been building.</p><Link className="button dark" href="/#work">Explore projects ↗</Link><Link className="text-link" href="/#contact">Let’s connect ↗</Link></div></main><footer className="wrap mono"><span>© 2026 sayan paul</span><Link href="/">Back to home ↗</Link></footer></>;}
