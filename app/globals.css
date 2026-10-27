@@ -129,3 +129,8 @@ html.fx [data-reveal=mask]:not(.is-in){transform:translateY(36px);clip-path:inse
 html.fx [data-reveal=image]:not(.is-in){clip-path:inset(9% 7% 9% 7% round 6px)}html.fx [data-reveal=image].is-in{clip-path:inset(0 0 0 0 round 0)}
 html.fx [data-reveal=image] img{transition:transform 1.4s cubic-bezier(.22,1,.36,1)}html.fx [data-reveal=image]:not(.is-in) img{transform:scale(1.12)}
 @media(prefers-reduced-motion:reduce){.problem-path,.path-arrow{transition:none}.problem-path:hover .path-arrow,.problem-path:focus-visible .path-arrow{transform:none}}
+
+/* Keep all portfolio links reachable alongside Writing. */
+.nav nav a[aria-current=page]{color:var(--blue)}
+@media(min-width:601px) and (max-width:850px){.nav{flex-wrap:wrap;height:auto;padding:18px 0;gap:18px}.nav nav{order:3;width:100%;justify-content:center;gap:30px}.nav-actions{margin-left:auto}}
+@media(max-width:380px){.nav nav{gap:18px;font-size:10px}}

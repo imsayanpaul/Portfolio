@@ -2,6 +2,24 @@
   "name": "sayan-portfolio",
   "version": "1.0.0",
   "private": true,
-  "scripts": {"dev":"next dev --hostname 127.0.0.1", "build":"next build", "start":"next start"},
-  "dependencies": {"next":"latest", "react":"latest", "react-dom":"latest", "motion":"latest"}
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start",
+    "article": "node scripts/new-article.mjs",
+    "study:prepare": "node scripts/prepare-study.mjs"
+  },
+  "dependencies": {
+    "mermaid": "^12.2.0",
+    "motion": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-markdown": "^10.1.0",
+    "rehype-katex": "^7.0.1",
+    "rehype-raw": "^7.0.0",
+    "rehype-sanitize": "^6.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0"
+  }
 }

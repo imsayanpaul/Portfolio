@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Strategic Management",
+    "slug": "strategic-management",
+    "code": "MIM702A",
+    "description": "Strategy, decisions, and the bigger picture.",
+    "kind": "Theory",
+    "updated": "2026-10-27",
+    "count": 29,
+    "modules": 5
+  },
+  {
+    "name": "Consumer Behaviour",
+    "slug": "consumer-behaviour",
+    "code": "MIM701A",
+    "description": "What shapes the choices people make.",
+    "kind": "Theory",
+    "updated": "2026-10-27",
+    "count": 44,
+    "modules": 6
+  },
+  {
+    "name": "Cyber Security",
+    "slug": "cyber-security",
+    "code": "BCAC703",
+    "description": "Networks, threats, and keeping information safe.",
+    "kind": "Theory",
+    "updated": "2026-10-27",
+    "count": 30,
+    "modules": 5
+  },
+  {
+    "name": "Research Methodology",
+    "slug": "research-methodology",
+    "code": "BCAC702",
+    "description": "From a good question to a sound conclusion.",
+    "kind": "Theory",
+    "updated": "2026-10-27",
+    "count": 32,
+    "modules": 6
+  },
+  {
+    "name": "Introduction to Machine Learning",
+    "slug": "machine-learning",
+    "code": "BCAC701B",
+    "description": "Models, algorithms, and learning from data.",
+    "kind": "Theory",
+    "updated": "2026-10-27",
+    "count": 22,
+    "modules": 5
+  },
+  {
+    "name": "Research Methodology Lab",
+    "slug": "research-methodology-lab",
+    "code": "BCAC792",
+    "description": "Design, analyse, and present a research study.",
+    "kind": "Lab",
+    "updated": "2026-10-26",
+    "count": 13,
+    "modules": 4
+  },
+  {
+    "name": "Machine Learning Lab",
+    "slug": "machine-learning-lab",
+    "code": "BCAC791B",
+    "description": "Hands-on Python, data, and model building.",
+    "kind": "Lab",
+    "updated": "2026-10-26",
+    "count": 16,
+    "modules": 6
+  }
+]
