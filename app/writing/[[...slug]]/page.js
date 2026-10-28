@@ -31,10 +31,10 @@ export async function generateMetadata({ params }) {
   const { slug = [] } = await params;
   const page = resolve(slug);
   if (!page) return {};
-  const title = page.subject ? page.subject.name + ' — Study notes | Sayan Paul' : page.article ? page.article.title + ' — Sayan Paul' : 'Writing — Sayan Paul';
-  const description = page.subject?.description || page.article?.description || 'Study notes, blog posts, and things learned along the way. By Sayan Paul.';
+  const title = page.subject ? `${page.subject.name} Notes (${page.subject.code}) — MAKAUT BCA Semester 7` : page.article ? page.article.title + ' — Sayan Paul' : page.tab === 'notes' ? 'MAKAUT BCA Semester 7 Notes — All Subjects | Sayan Paul' : 'Blog — Sayan Paul';
+  const description = page.subject ? `Free MAKAUT BCA Semester 7 ${page.subject.name} notes (${page.subject.code}): ${page.subject.count} answers and practicals, organised by module. Student-written study material by Sayan Paul.` : page.article?.description || (page.tab === 'notes' ? 'Study MAKAUT BCA Sem 7 with free subject notes, questions, answers and lab practicals. Cyber Security, Machine Learning, Research Methodology and more.' : 'Personal reflections and stories about building software, learning, and everyday life. By Sayan Paul.');
   const url = '/writing' + (slug.length ? '/' + slug.join('/') : '');
-  return { title, description, alternates: { canonical: url }, openGraph: { title, description, url, type: page.article ? 'article' : 'website', images: ['/opengraph-image.png'] } };
+  return { title, description, alternates: { canonical: url }, twitter: { card: 'summary_large_image', title, description }, openGraph: { title, description, url, type: page.article ? 'article' : 'website', images: ['/opengraph-image.png'] } };
 }
 export default async function WritingPage({ params }) {
   const { slug = [] } = await params;
