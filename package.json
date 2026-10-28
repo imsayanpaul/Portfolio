@@ -10,6 +10,7 @@
     "study:prepare": "node scripts/prepare-study.mjs"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.118.0",
     "mermaid": "^12.2.0",
     "motion": "latest",
     "next": "latest",

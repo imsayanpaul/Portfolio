@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import StudySearch from './search';
+import LiveReaders from './live-readers';
 
 export default function WritingCollection({ subjects, articles, activeTab }) {
   const total = subjects.reduce((count, subject) => count + subject.count, 0);
@@ -8,7 +9,7 @@ export default function WritingCollection({ subjects, articles, activeTab }) {
     <nav className="writing-tabs" aria-label="Writing categories"><Link href="/writing" aria-current={activeTab === 'notes' ? 'page' : undefined}>Study notes <span>{String(subjects.length).padStart(2, '0')}</span></Link><Link href="/writing/articles" aria-current={activeTab === 'articles' ? 'page' : undefined}>Blog <span>{String(articles.length).padStart(2, '0')}</span></Link></nav>
     {activeTab === 'notes' ? <section aria-label="Study notes" className="writing-notes">
       <div className="study-section-heading"><div><span className="mono">CURRENTLY LEARNING / SEMESTER 7</span><h2>A few notes to study from.</h2></div><p>{total} answers & practicals.<br />Free to read, no sign-in.</p></div>
-      <StudySearch subjects={subjects} />
+      <LiveReaders /><StudySearch subjects={subjects} />
       <div className="subject-grid">{subjects.map((subject, index) => <Link href={'/writing/notes/' + subject.slug} key={subject.slug} className={'subject-card subject-tone-' + index}>
         <div className="subject-card-top mono"><span>{String(index + 1).padStart(2, '0')} / {subject.code}</span><span>{subject.kind}</span></div>
         <span className="subject-symbol" aria-hidden="true">{['↗', '◎', '⌘', '⊕', '✳', '⌁', '⌗'][index]}</span>

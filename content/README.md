@@ -31,3 +31,13 @@ Create a draft:
 Articles support headings, links, images, lists, tables, code blocks, LaTeX math, and Mermaid diagrams. Put article images in public/articles/ and reference them with /articles/filename.
 
 Drafts (published: false) are excluded from the public article list, generated pages, and sitemap. No example articles are published.
+
+## Live reader count
+
+Study pages use Supabase Realtime Presence in project ubdxfaedqlezdtbglnfo.
+The browser publishable key in live-readers.js is intentionally public; no secret key or database table is used.
+The badge estimates active browsers across the notes landing page and all subjects, including the current visitor.
+Only visible tabs participate. An anonymous random localStorage ID deduplicates tabs in the same browser; storage-blocked tabs count separately. Different browsers/devices count separately. Disconnects can take a moment to propagate.
+Only that random identifier is sent in the presence payload; no names, emails, or reading history are collected by this feature. The service still receives normal connection metadata.
+This public presence count is informational, not abuse-resistant analytics. Connection failures show an unavailable message rather than a fabricated number.
+Production domains share notes-readers; local and preview hosts use separate channels.

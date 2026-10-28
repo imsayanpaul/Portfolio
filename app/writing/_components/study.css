@@ -24,3 +24,4 @@
 @media(max-width:600px){.writing-intro{display:block}.writing-mark{display:none}.writing-hero{padding:25px 0 35px}.writing-hero>.mono{font-size:8px;margin-bottom:20px}.writing-tabs{gap:28px}.writing-tabs>a{font-size:12px;padding:15px 0}.writing-notes{padding-top:28px}.writing-notes .study-section-heading h2{font-size:26px}.writing-empty h2{font-size:25px}}
 
 .reading-tools{flex-wrap:wrap}.reading-status{flex-basis:100%;font-size:10px;color:var(--blue)}.reading-tools button:disabled{cursor:wait;opacity:.6}
+.live-readers{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);margin:0 0 20px;min-height:20px}.reader-dot{width:6px;height:6px;border-radius:50%;background:var(--muted);flex-shrink:0}.live-readers[data-connected=true] .reader-dot{background:#65a330;box-shadow:0 0 0 3px #65a33018}@media print{.live-readers{display:none}}

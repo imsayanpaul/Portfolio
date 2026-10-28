@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { subjects } from './data';
 import Markdown from './markdown';
 import StudySearch from './search';
+import LiveReaders from './live-readers';
 import { ReadingControls } from './reading-controls';
 
 export default function SubjectReader({ data }) {
@@ -12,7 +13,7 @@ export default function SubjectReader({ data }) {
     <div className="study-breadcrumb mono"><Link href="/writing">← WRITING / STUDY NOTES</Link><span>SEM 7 / {data.code}</span></div>
     <nav className="subject-tabs" aria-label="Study subjects">{subjects.map(s => <Link key={s.slug} href={'/writing/notes/' + s.slug} aria-current={s.slug === subject ? 'page' : undefined}>{s.name}</Link>)}</nav>
     <header className="subject-header"><div><span className="mono">{data.kind.toUpperCase()} / {data.code}</span><h1>{data.name}</h1><p>{data.description}</p></div><div className="subject-meta mono"><span>{data.count} ANSWERS & PRACTICALS</span><span>UPDATED {new Date(data.updated + 'T12:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }).toUpperCase()}</span></div></header>
-    <StudySearch key={subject} subjects={subjects} currentSubject={subject} />
+    <LiveReaders /><StudySearch key={subject} subjects={subjects} currentSubject={subject} />
     <div className="study-reading-layout">
       <aside className="study-toc"><span className="mono">IN THIS NOTEBOOK</span><nav aria-label="Module contents">{data.modules.map((m, i) => <a href={'#' + m.id} key={m.id}><span className="mono">{String(i).padStart(2, '0')}</span><span>{m.title.replace(/ — .*/, '')}</span></a>)}</nav><p>Open one question at a time.<br />Take it at your own pace.</p><a className="study-correction" href={'mailto:sayanpaul717@gmail.com?subject=' + encodeURIComponent('Study correction: ' + data.name)}>Suggest a correction ↗</a></aside>
       <div className="study-reading-content"><ReadingControls key={subject} />
