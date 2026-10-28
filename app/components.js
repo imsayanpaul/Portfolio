@@ -1,13 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { motion, MotionConfig, useReducedMotion } from 'motion/react';
+import { useEffect, useState, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { projects, projectId, repoUrl } from './projects';
 
-export function Reveal({children}) {
-  const reduce = useReducedMotion();
-  return <MotionConfig reducedMotion="user"><motion.div initial={reduce ? false : {opacity:0}} animate={{opacity:1}} transition={{duration:.45}}>{children}</motion.div></MotionConfig>;
-}
+export function Reveal({children}) { return <>{children}</>; }
 
 const pad=n=>String(n).padStart(2,'0');
 
@@ -30,17 +27,16 @@ function HoodLines({p}){
 
 export function ProjectGallery(){
   const [filter,setFilter]=useState('all');
-  const reduce=useReducedMotion();
   const visible=projects.filter(p=>filter==='all'||p.category===filter);
   return <><div className="filter-bar"><div role="group" aria-label="Filter projects">{[['all','All work','05'],['web','Web & AI','03'],['tools','Everyday tools','02']].map(([key,label,count])=><button key={key} className={filter===key?'active':''} aria-pressed={filter===key} onClick={()=>setFilter(key)}>{label} <sup>{count}</sup></button>)}</div></div>
-  <div className="projects">{visible.map(p=><motion.article layout={!reduce} initial={reduce?false:{opacity:0,y:12}} animate={{opacity:1,y:0}} transition={{duration:.25}} className="project" id={projectId(p)} key={p.name}>
+  <div className="projects">{visible.map(p=><article className="project" id={projectId(p)} key={p.name}>
     <a className="preview" href={p.live||repoUrl(p)} {...external} aria-label={`Explore ${p.name}`}><span className="project-number">{pad(projects.indexOf(p)+1)} / {p.category==='web'?'WEB APPLICATION':'EVERYDAY TOOL'}</span><img src={`/assets/${p.image}`} alt={p.alt} loading="lazy"/><span className="visit" aria-hidden="true">↗</span></a>
     <div className="project-meta"><h3>{p.name}</h3><span className="project-tags">{p.tags}</span></div>
     <dl className="project-facts"><div><dt className="mono">Problem</dt><dd>{p.problem}</dd></div><div><dt className="mono">Solution</dt><dd>{p.description}</dd></div></dl>
     <div className="project-links">{p.live&&<a href={p.live} {...external}>Visit project ↗</a>}<a href={repoUrl(p)} {...external}>Source code ↗</a></div>
     <details className="project-hood"><summary><span className="hood-icon" aria-hidden="true">{'</>'}</span>Under the hood<span className="hood-hint">how it’s built</span></summary><div className="hood"><div className="hood-bar mono"><span className="hood-dots"><i/><i/><i/></span><span className="hood-tab">{p.repo.toLowerCase()}/notes.md</span><span className="hood-tags">{p.tags}</span></div><HoodLines p={p}/></div></details>
     {p.repo==='sequential-paste'&&<details className="project-demo"><summary><span className="hood-icon" aria-hidden="true">▶</span>Try the interactive demo<span className="hood-hint">no install needed</span></summary><PasteDemo/></details>}
-  </motion.article>)}</div></>;
+  </article>)}</div></>;
 }
 
 const queue=['Sayan Paul','Full-stack Developer','Something useful ✳'];
@@ -90,34 +86,33 @@ const revealGroups=[
 ];
 const staggerGroups='.problem-paths>li,.local-links>li';
 export function ScrollFX(){
+  const bar=useRef(null);
+  const pathname=usePathname();
   useEffect(()=>{
+    // Touch devices keep content static and avoid per-scroll JavaScript work.
+    if(matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse), (max-width: 850px)').matches)return;
     const root=document.documentElement;
-    const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
     let raf=0;
-    const onScroll=()=>{if(raf)return;raf=requestAnimationFrame(()=>{raf=0;const max=root.scrollHeight-innerHeight;root.style.setProperty('--progress',max>0?String(scrollY/max):'0');if(!reduce)root.style.setProperty('--hs',String(Math.min(scrollY,900)));});};
+    const onScroll=()=>{if(raf)return;raf=requestAnimationFrame(()=>{
+      raf=0;const max=root.scrollHeight-innerHeight;
+      if(bar.current)bar.current.style.transform='scaleX('+(max>0?scrollY/max:0)+')';
+    });};
     onScroll();addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);
-    if(reduce||!('IntersectionObserver' in window))return()=>{removeEventListener('scroll',onScroll);removeEventListener('resize',onScroll);};
+    const cleanupScroll=()=>{cancelAnimationFrame(raf);removeEventListener('scroll',onScroll);removeEventListener('resize',onScroll);};
+    if(!('IntersectionObserver' in window))return cleanupScroll;
     root.classList.add('fx');
-    const pending=new Set();
-    const reveal=target=>{
-      if(!pending.delete(target))return;
+    const timers=new Set();
+    const io=new IntersectionObserver(entries=>entries.forEach(({isIntersecting,target})=>{
+      if(!isIntersecting)return;
       io.unobserve(target);target.classList.add('is-in');
-      const done=1500+(+target.style.getPropertyValue('--d')||0)*70;
-      setTimeout(()=>{target.removeAttribute('data-reveal');target.classList.remove('is-in');},done);
-    };
-    const io=new IntersectionObserver(entries=>entries.forEach(({isIntersecting,target})=>{if(isIntersecting)reveal(target);}),{rootMargin:'0px 0px -12% 0px',threshold:.08});
-    // Backup for browsers that throttle IntersectionObserver (background tabs, some webviews).
-    let last=0;
-    const sweep=()=>{const now=Date.now();if(now-last<90)return;last=now;pending.forEach(el=>{const r=el.getBoundingClientRect();if(r.top<innerHeight*.88&&r.bottom>0)reveal(el);});};
-    addEventListener('scroll',sweep,{passive:true});
-    const tag=(el,kind,d)=>{if(el.dataset.fx)return;el.dataset.fx='1';const r=el.getBoundingClientRect();if(r.top<innerHeight*.85&&r.bottom>0)return;el.dataset.reveal=kind;if(d)el.style.setProperty('--d',d);pending.add(el);io.observe(el);};
-    const scan=()=>{
-      revealGroups.forEach(([kind,sel])=>document.querySelectorAll(sel).forEach(el=>tag(el,kind)));
-      document.querySelectorAll(staggerGroups).forEach(el=>tag(el,'up',[...el.parentNode.children].indexOf(el)+1));
-    };
-    scan();
-    const mo=new MutationObserver(scan);mo.observe(document.body,{childList:true,subtree:true});
-    return()=>{io.disconnect();mo.disconnect();removeEventListener('scroll',sweep);removeEventListener('scroll',onScroll);removeEventListener('resize',onScroll);root.classList.remove('fx');document.querySelectorAll('[data-fx]').forEach(el=>{delete el.dataset.fx;el.removeAttribute('data-reveal');el.classList.remove('is-in');el.style.removeProperty('--d');});};
-  },[]);
-  return <div className="scroll-progress" aria-hidden="true"/>;
+      const timer=setTimeout(()=>{target.removeAttribute('data-reveal');target.classList.remove('is-in');timers.delete(timer);},1300);
+      timers.add(timer);
+    }),{rootMargin:'0px 0px -8% 0px',threshold:.01});
+    // Read geometry together before writing styles; observe once per route.
+    const elements=[...new Set(revealGroups.flatMap(([,selector])=>[...document.querySelectorAll(selector)]).concat([...document.querySelectorAll(staggerGroups)]))];
+    const below=elements.filter(el=>el.getBoundingClientRect().top>=innerHeight);
+    below.forEach(el=>{el.dataset.reveal='up';io.observe(el);});
+    return()=>{cleanupScroll();io.disconnect();timers.forEach(clearTimeout);root.classList.remove('fx');elements.forEach(el=>{el.removeAttribute('data-reveal');el.classList.remove('is-in');});};
+  },[pathname]);
+  return <div ref={bar} className="scroll-progress" aria-hidden="true"/>;
 }
