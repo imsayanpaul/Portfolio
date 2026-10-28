@@ -17,6 +17,11 @@ export function ProblemList(){
 }
 
 const external={target:'_blank',rel:'noopener noreferrer'};
+function previewSources(image){
+  const stem=image.replace(/\.[^.]+$/, '');
+  const widths=stem==='scrollmark'?[300]:stem==='sequential'?[480,960]:[480,960,1440];
+  return widths.map(width=>'/assets/'+stem+'-'+width+'.webp '+width+'w').join(', ');
+}
 function HoodLines({p}){
   const lines=p.note.split(/(?<=\.)\s+(?=[A-Z])/);
   return <ol className="hood-code">
@@ -29,8 +34,8 @@ export function ProjectGallery(){
   const [filter,setFilter]=useState('all');
   const visible=projects.filter(p=>filter==='all'||p.category===filter);
   return <><div className="filter-bar"><div role="group" aria-label="Filter projects">{[['all','All work','05'],['web','Web & AI','03'],['tools','Everyday tools','02']].map(([key,label,count])=><button key={key} className={filter===key?'active':''} aria-pressed={filter===key} onClick={()=>setFilter(key)}>{label} <sup>{count}</sup></button>)}</div></div>
-  <div className="projects">{visible.map(p=><article className="project" id={projectId(p)} key={p.name}>
-    <a className="preview" href={p.live||repoUrl(p)} {...external} aria-label={`Explore ${p.name}`}><span className="project-number">{pad(projects.indexOf(p)+1)} / {p.category==='web'?'WEB APPLICATION':'EVERYDAY TOOL'}</span><img src={`/assets/${p.image}`} alt={p.alt} loading="lazy"/><span className="visit" aria-hidden="true">↗</span></a>
+  <div className="projects">{visible.map((p,index)=><article className="project" id={projectId(p)} key={p.name}>
+    <a className="preview" href={p.live||repoUrl(p)} {...external} aria-label={`Explore ${p.name}`}><span className="project-number">{pad(projects.indexOf(p)+1)} / {p.category==='web'?'WEB APPLICATION':'EVERYDAY TOOL'}</span><img src={`/assets/${p.image}`} srcSet={previewSources(p.image)} sizes={index===0 ? "(max-width: 640px) calc(100vw - 98px), (max-width: 900px) calc(100vw - 138px), (max-width: 1376px) calc(100vw - 296px), 1080px" : "(max-width: 640px) calc(100vw - 98px), (max-width: 900px) calc(50vw - 86px), 558px"} alt={p.alt} loading="lazy" decoding="async"/><span className="visit" aria-hidden="true">↗</span></a>
     <div className="project-meta"><h3>{p.name}</h3><span className="project-tags">{p.tags}</span></div>
     <dl className="project-facts"><div><dt className="mono">Problem</dt><dd>{p.problem}</dd></div><div><dt className="mono">Solution</dt><dd>{p.description}</dd></div></dl>
     <div className="project-links">{p.live&&<a href={p.live} {...external}>Visit project ↗</a>}<a href={repoUrl(p)} {...external}>Source code ↗</a></div>
