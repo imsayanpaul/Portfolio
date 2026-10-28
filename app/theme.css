@@ -1,0 +1,85 @@
+:root{color-scheme:light}
+.theme-toggle{position:relative;display:grid;place-items:center;flex:0 0 38px;width:38px;height:38px;padding:0;background:transparent;border:1px solid var(--line);border-radius:50%;color:var(--ink);transition:background .2s,border-color .2s,transform .2s}
+.theme-toggle:hover{background:var(--line);border-color:var(--muted);transform:rotate(-10deg)}
+.theme-toggle svg{width:19px;height:19px;grid-area:1/1;transition:opacity .2s,transform .3s}
+.theme-toggle .theme-sun{opacity:0;transform:rotate(-60deg) scale(.5)}
+html[data-theme=dark] .theme-toggle .theme-moon{opacity:0;transform:rotate(60deg) scale(.5)}
+html[data-theme=dark] .theme-toggle .theme-sun{opacity:1;transform:rotate(0) scale(1)}
+.nav-actions{gap:16px}
+@media(min-width:851px) and (max-width:1100px){.nav nav{gap:22px}.nav-contact{padding:11px 12px}.nav-contact span{margin-left:12px}.nav-actions{gap:10px}.nav-socials{gap:2px}.nav-socials a{width:32px}}
+@media(max-width:600px){.theme-toggle{width:34px;height:34px;flex-basis:34px}.nav-actions{gap:8px}.nav-socials a{width:32px;height:34px}.nav-socials{gap:2px}}
+@media(max-width:360px){.nav-actions{gap:6px}.nav-socials a{width:28px}.theme-toggle{width:30px;height:32px;flex-basis:30px}}
+
+@media screen {
+  html[data-theme=dark]{color-scheme:dark;--paper:#141612;--ink:#eeeee7;--line:#363a31;--muted:#a6ad9e;--blue:#9aaaff;--lime:#d8ed76;--black:#090b08}
+  html[data-theme=dark] ::selection{background:#586de4;color:#fff}
+  html[data-theme=dark] .topline{background:#090b08;color:#c5cabb;border-bottom:1px solid #272b23}
+  html[data-theme=dark] .skip{background:#252a21;color:var(--ink)}
+  html[data-theme=dark] .nav-socials a:hover{background:#252c3c}
+  html[data-theme=dark] .nav-contact:hover,
+  html[data-theme=dark] .dark,
+  html[data-theme=dark] .filter-bar button.active{background:var(--ink);color:var(--paper)}
+  html[data-theme=dark] .hero-portrait,
+  html[data-theme=dark] .profile-photo{background:#252a22;border-color:var(--line);box-shadow:5px 7px 0 #080a07}
+  html[data-theme=dark] .hero-portrait:hover{box-shadow:7px 10px 0 #080a07}
+  html[data-theme=dark] .ticker{color:#171815;border-color:#090b08}
+  html[data-theme=dark] .problem-path:hover,
+  html[data-theme=dark] .problem-path:focus-visible{background:#22271e}
+  html[data-theme=dark] .problem-path:hover .path-arrow,
+  html[data-theme=dark] .problem-path:focus-visible .path-arrow{color:#141612}
+  html[data-theme=dark] .preview{background:#262a35}
+  html[data-theme=dark] .project:first-child .preview{background:#272a32}
+  html[data-theme=dark] .project:nth-child(2) .preview{background:#293023}
+  html[data-theme=dark] .project:nth-child(3) .preview{background:#232e3a}
+  html[data-theme=dark] .project:nth-child(4) .preview{background:#342e23}
+  html[data-theme=dark] .project:nth-child(5) .preview{background:#2e2738}
+  html[data-theme=dark] .preview:hover .visit{color:#141612}
+  html[data-theme=dark] .project-facts>div:first-child dt{color:#e3ac60}
+  html[data-theme=dark] .project summary:after{background:linear-gradient(#141612,#141612) center/10px 1.6px no-repeat,linear-gradient(#141612,#141612) center/1.6px 10px no-repeat,var(--blue)}
+  html[data-theme=dark] .hood{color:#eeeee7;background:#0e110c}
+  html[data-theme=dark] .hood-tab{color:#eeeee7}
+  html[data-theme=dark] .hood-icon{background:#9aaaff18}
+  html[data-theme=dark] .project summary:hover .hood-icon,
+  html[data-theme=dark] .project details[open] .hood-icon{color:#141612}
+  html[data-theme=dark] .demo{background:#1c2018}
+  html[data-theme=dark] .demo-fields>div{background:#272d22;border-color:var(--line)}
+  html[data-theme=dark] .demo li.done{color:#9aa58c}
+  html[data-theme=dark] .blue{background:#3d55cc;color:#fff}
+  html[data-theme=dark] .about{background:#0c100a;color:#eeeee7;border-block:1px solid #2d3327}
+  html[data-theme=dark] .about .section-label,
+  html[data-theme=dark] .about-copy .large{color:#eeeee7}
+  html[data-theme=dark] .contact{background:#202d73;color:#fff}
+  html[data-theme=dark] .send{background:#eeeee7;color:#171815}
+  html[data-theme=dark] .send:hover{background:white}
+  html[data-theme=dark] .career-logo{border-color:#52584b}
+  html[data-theme=dark] .dock-name{background:#e1e6d7;color:#171815}
+
+  html[data-theme=dark] .study-search-bar{background:#1c2018}
+  html[data-theme=dark] .study-search input::placeholder{color:#939c89}
+  html[data-theme=dark] .study-search select{color:var(--ink)}
+  html[data-theme=dark] .study-search option{background:#1c2018;color:var(--ink)}
+  html[data-theme=dark] .study-search-results{background:#1b2017}
+  html[data-theme=dark] .subject-card{background:#1c2118}
+  html[data-theme=dark] .subject-tone-0{background:#242c1e}
+  html[data-theme=dark] .subject-tone-2{background:#202836}
+  html[data-theme=dark] .subject-tone-4{background:#292332}
+  html[data-theme=dark] .subject-tone-6{background:#303c1b;color:var(--ink);border-color:#536139}
+  html[data-theme=dark] .subject-card:hover{background:#30382a;border-color:#7d876e}
+  html[data-theme=dark] .subject-tone-2:hover{background:#2b3649}
+  html[data-theme=dark] .subject-tone-4:hover{background:#382f44}
+  html[data-theme=dark] .subject-tone-6:hover{background:#3a4823}
+  html[data-theme=dark] .study-overview{background:#242c1e}
+  html[data-theme=dark] .study-prose{color:#d0d5c8}
+  html[data-theme=dark] .study-prose blockquote{background:#242c3b}
+  html[data-theme=dark] .study-prose th{background:#293123}
+  html[data-theme=dark] .study-prose code{background:#2b3225;color:#dce8ca}
+  html[data-theme=dark] .study-code{background:#0c1009;border:1px solid var(--line)}
+  html[data-theme=dark] .study-code code{background:transparent;color:#e7eddb}
+  /* Original diagrams keep their intended colours on a muted paper canvas. */
+  html[data-theme=dark] .study-diagram{background:#e0e5da;color:#252c20;border-color:#5c6552}
+  html[data-theme=dark] .study-diagram details{color:#424b39}
+  html[data-theme=dark] .study-prose img{background:#fff;filter:brightness(.88)}
+}
+@media screen and (hover:none){html[data-theme=dark] .dock-name{background:none;color:var(--muted)}}
+@media print{html{color-scheme:light!important}.theme-toggle{display:none!important}}
+@media(prefers-reduced-motion:reduce){.theme-toggle,.theme-toggle svg{transition:none}.theme-toggle:hover{transform:none}}

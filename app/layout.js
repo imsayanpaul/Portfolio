@@ -1,5 +1,7 @@
 import { DM_Sans, IBM_Plex_Mono, Space_Grotesk } from 'next/font/google';
 import './globals.css';
+import './theme.css';
+import { themeScript } from './theme-init';
 import { ScrollFX } from './components';
 
 const body = DM_Sans({ subsets: ['latin'], variable: '--font-body' });
@@ -20,4 +22,4 @@ export const metadata = {
   twitter: { card: 'summary_large_image', title, description: 'Small sparks. Working software.' },
 };
 export const viewport = { themeColor: '#171815' };
-export default function RootLayout({ children }) {return <html lang="en" className={`${body.variable} ${display.variable} ${mono.variable}`}><body><ScrollFX/>{children}</body></html>;}
+export default function RootLayout({ children }) {return <html lang="en" suppressHydrationWarning className={`${body.variable} ${display.variable} ${mono.variable}`}><head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head><body><ScrollFX/>{children}</body></html>;}

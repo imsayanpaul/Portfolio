@@ -32,7 +32,7 @@ export async function generateMetadata({ params }) {
   const page = resolve(slug);
   if (!page) return {};
   const title = page.subject ? page.subject.name + ' — Study notes | Sayan Paul' : page.article ? page.article.title + ' — Sayan Paul' : 'Writing — Sayan Paul';
-  const description = page.subject?.description || page.article?.description || 'Study notes, articles, and things learned along the way. By Sayan Paul.';
+  const description = page.subject?.description || page.article?.description || 'Study notes, blog posts, and things learned along the way. By Sayan Paul.';
   const url = '/writing' + (slug.length ? '/' + slug.join('/') : '');
   return { title, description, alternates: { canonical: url }, openGraph: { title, description, url, type: page.article ? 'article' : 'website', images: ['/opengraph-image.png'] } };
 }
@@ -47,7 +47,7 @@ export default async function WritingPage({ params }) {
   }
   return <><a className="skip" href="#writing-main">Skip to writing</a><div className="topline"><span>NOTES FROM THE WORKBENCH</span><span>BY SAYAN PAUL</span></div><SiteHeader activePage="writing" />
     {page.subject ? <SubjectReader data={page.subject} /> : <main className="wrap writing-page" id="writing-main">
-      {page.article ? <article className="article-body"><Link className="mono" href="/writing/articles">← ALL ARTICLES</Link><header className="article-header"><span className="mono">{page.article.date} · BY SAYAN PAUL</span><h1>{page.article.title}</h1><p>{page.article.description}</p></header><Markdown>{body}</Markdown></article> : <WritingCollection subjects={subjects} articles={published} activeTab={page.tab} />}
+      {page.article ? <article className="article-body"><Link className="mono" href="/writing/articles">← BACK TO BLOG</Link><header className="article-header"><span className="mono">{page.article.date} · BY SAYAN PAUL</span><h1>{page.article.title}</h1><p>{page.article.description}</p></header><Markdown>{body}</Markdown></article> : <WritingCollection subjects={subjects} articles={published} activeTab={page.tab} />}
     </main>}
     <footer className="wrap study-footer"><span>© 2026 Sayan Paul</span><div><Link href="/writing">All writing ↗</Link><Link href="/">Portfolio ↗</Link></div></footer></>;
 }
