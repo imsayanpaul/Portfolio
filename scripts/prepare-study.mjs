@@ -3,6 +3,9 @@ import path from 'node:path';
 
 const root = process.cwd();
 const raw = JSON.parse(await fs.readFile(path.join(root, 'content/notion/sem7.json'), 'utf8'));
+if (/X-Amz-(?:Credential|Signature|Security-Token)|ASIA[A-Z0-9]{16}/i.test(JSON.stringify(raw))) {
+  throw new Error('The Notion snapshot contains signed attachment credentials. Download attachments separately and remove signing parameters before importing or committing.');
+}
 const definitions = [
   ['Strategic Management', 'strategic-management', 'MIM702A', 'Strategy, decisions, and the bigger picture.'],
   ['Consumer Behaviour', 'consumer-behaviour', 'MIM701A', 'What shapes the choices people make.'],

@@ -4,7 +4,7 @@
 
 The seven Semester 7 subjects were imported from Sayan's Notion SEM 7 database on 27 October 2026.
 
-- notion/sem7.json is the original snapshot returned by the Notion connector.
+- notion/sem7.json is the Notion connector snapshot with temporary attachment signing parameters removed.
 - study/*.json contains the reader content, grouped into modules and questions.
 - ../public/study/diagrams/ contains the ten original SVG illustrations downloaded from Notion.
 - ../public/study/search-index.json is the generated full-text search index.
